@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Peças</string>
+
+    <string name="showCodigo">Codigo</string>
+    <string name="showCategoria">Categoria</string>
+    <string name="showValorVenda">Valor</string>
+    <string name="showStatus">Status</string>
+
+    <string name="hint_nome">Nome</string>
+    <string name="hint_codigo">Codigo</string>
+    <string name="hint_categoria">Categoria</string>
+    <string name="simbolo_moeda">R$</string>
+    <string name="hint_valorVenda">Valor</string>
+    <string name="hint_status">Status</string>
+    <string name="salvar_button">Salvar</string>
+
+    <string name="order_title">Order</string>
+    <string name="status_title">Status</string>
+    <string name="settings_title">Settings</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="remove_title">Remove</string>
+    <string name="share_title">Share</string>
+</resources>
