@@ -4,6 +4,8 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,16 +14,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pi.R;
 import com.pi.model.Peca;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class ContatoAdapter  extends RecyclerView.Adapter<ContatoAdapter.MyViewHolder> {
+public class ContatoAdapter  extends RecyclerView.Adapter<ContatoAdapter.MyViewHolder> implements Filterable{
 
     private List<Peca> dataSet;
     private OnItemClickListener listener;
+    private List<String> nomeList;
+    private List<String> nomeListAll;
 
-    public ContatoAdapter(List<Peca> dataSet, OnItemClickListener listener) {
+    public ContatoAdapter(List<Peca> dataSet, OnItemClickListener listener,List<String> nomeList) {
         this.dataSet = dataSet;
         this.listener = listener;
+        this.nomeList=nomeList;
+        this.nomeListAll=new ArrayList<>(nomeList);
     }
 
     @NonNull
@@ -43,6 +51,38 @@ public class ContatoAdapter  extends RecyclerView.Adapter<ContatoAdapter.MyViewH
     public int getItemCount() {
         return dataSet.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter=new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<String> filteredList = new ArrayList<>();
+            if(constraint.toString().isEmpty()){
+                filteredList.addAll(nomeListAll);
+            }else{
+                for(String nome: nomeListAll){
+                    if(nome.toLowerCase().contains(constraint.toString().toLowerCase())){
+                        filteredList.add(nome);
+                    }
+                }
+            }
+
+            FilterResults filterResults=new FilterResults();
+            filterResults.values=filteredList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            nomeList.clear();
+            nomeList.addAll((Collection<? extends String>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener
     {
