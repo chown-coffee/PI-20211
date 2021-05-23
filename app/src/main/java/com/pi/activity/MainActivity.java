@@ -3,6 +3,7 @@ package com.pi.activity;
 import androidx.annotation.NonNull; import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ContatoAdapter.On
     public static final String EXTRA_SHOW = "EXTRA_SHOW";
     private static final int ADD_CONTACT_REQUEST = 1;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private ContatoAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private List<Peca> myDataSet = new ArrayList<>();
@@ -43,7 +44,11 @@ public class MainActivity extends AppCompatActivity implements ContatoAdapter.On
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ContatoAdapter(myDataSet, this);
+        List<String> nomeList=new ArrayList<>();
+        for(Peca p: myDataSet){
+            nomeList.add(p.getNome());
+        }
+        adapter = new ContatoAdapter(myDataSet, this,nomeList);
         recyclerView.setAdapter(adapter);
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
@@ -71,7 +76,27 @@ public class MainActivity extends AppCompatActivity implements ContatoAdapter.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        MenuItem item=menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        List<String> nomeList2=new ArrayList<>();/*
+        for(Peca p: myDataSet){
+            nomeList2.add(p.getNome());
+        }
+        ContatoAdapter contatoAdapter=new ContatoAdapter(myDataSet, this,nomeList2);*/
+        //adapter = new ContatoAdapter(myDataSet, this,nomeList2);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -85,12 +110,12 @@ public class MainActivity extends AppCompatActivity implements ContatoAdapter.On
 //            case R.id.option_favorites:
 //                Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
 //                return true;
-            case R.id.option_settings:
+           /* case R.id.option_settings:
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.option_status:
                 Toast.makeText(this, "Info", Toast.LENGTH_SHORT).show();
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
