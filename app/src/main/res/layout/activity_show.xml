@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:scrollbarSize="4dp"
     tools:context=".activity.ShowActivity">
 
     <ImageView
@@ -18,7 +19,18 @@
         app:srcCompat="@drawable/ic_parts_outline_24_"
         tools:ignore="VectorDrawableCompat" />
 
-    <TextView
+    <!-- <TextView
+        android:id="@+id/nome_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Peca"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" /> -->
+    <EditText
         android:id="@+id/nome_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +42,66 @@
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
+    <EditText
+        android:id="@+id/codigo_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="12341234"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/categoria_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Categoria"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codigo_textView" />
+
+    <!--<TextView
+        android:id="@+id/status_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Ativa"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valorVenda_textView" />-->
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/status_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Ativa"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoria_textView" />
+
+    <TextView
+        android:id="@+id/showCodigo_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showCodigo"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/codigo_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/codigo_textView" />
+
+    <TextView
+        android:id="@+id/showCategoria_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showCategoria"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/categoria_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/categoria_textView" />
+
+    <!--
     <TextView
         android:id="@+id/codigo_textView"
         android:layout_width="wrap_content"
@@ -99,7 +171,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/valorVenda_textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/valorVenda_textView" />
-
+-->
     <TextView
         android:id="@+id/showStatus_textView"
         android:layout_width="wrap_content"
@@ -109,5 +181,61 @@
         app:layout_constraintBottom_toBottomOf="@+id/status_textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/status_textView" />
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="308dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showStatus_textView"
+        app:layout_constraintVertical_bias="0.497">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lucro_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:text="@string/lucro"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/venda_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/venda"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/custo_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/custo"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/image_preco"
+                android:layout_width="158dp"
+                android:layout_height="97dp"
+                android:layout_gravity="center|right"
+                android:background="@color/orange"
+                app:srcCompat="@drawable/ic_action_row"
+                tools:ignore="VectorDrawableCompat" />
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

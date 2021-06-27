@@ -10,6 +10,12 @@ import android.widget.EditText;
 
 import com.pi.R;
 import com.pi.model.Peca;
+import com.pi.model.Preco;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -17,7 +23,8 @@ public class AddActivity extends AppCompatActivity {
     private EditText name_editText;
     private EditText codigo_editText;
     private EditText categoria_editText;
-    private EditText valorVenda_editText;
+    private EditText custo_editText;
+    private EditText lucro_editText;
     private Button save_button;
 
     @Override
@@ -28,7 +35,8 @@ public class AddActivity extends AppCompatActivity {
         name_editText = findViewById(R.id.name_editText);
         codigo_editText = findViewById(R.id.codigo_editText);
         categoria_editText = findViewById(R.id.categoria_editText);
-        valorVenda_editText = findViewById(R.id.valorVenda_editText);
+        custo_editText = findViewById(R.id.cust_editText);
+        lucro_editText = findViewById(R.id.lucr_editText);
 //        status_editText = findViewById(R.id.status_editText);
         save_button = findViewById(R.id.save_button);
 
@@ -38,7 +46,8 @@ public class AddActivity extends AppCompatActivity {
                 final String name = name_editText.getText().toString();
                 final String codigo = codigo_editText.getText().toString();
                 final String categoria = categoria_editText.getText().toString();
-                final double valorVenda = Double.parseDouble(valorVenda_editText.getText().toString().replace(",", "."));
+                final double lucro = Double.parseDouble(lucro_editText.getText().toString().replace(",", "."));
+                final double custo =Double.parseDouble(custo_editText.getText().toString().replace(",", "."));
                 final boolean status = true;
 
                 if (name.length() == 0) {
@@ -50,12 +59,19 @@ public class AddActivity extends AppCompatActivity {
                 } else if (categoria.length() == 0) {
                     categoria_editText.requestFocus();
                     categoria_editText.setError("FIELD CANNOT BE EMPTY");
-                } else if (valorVenda_editText.length() == 0) {
+                } /*else if (valorVenda_editText.length() == 0) {
                     valorVenda_editText.requestFocus();
                     valorVenda_editText.setError("FIELD CANNOT BE EMPTY");
-                } else {
+                } */else {
                     Intent data = new Intent();
-                    Peca peca = new Peca(name, codigo, categoria, valorVenda, status);
+
+                    Date dataAtual=new Date(System.currentTimeMillis());
+                    DateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
+                    String dataFormatada = dateFormat.format(dataAtual);
+
+                    Preco preco8=new Preco(custo,lucro,dataFormatada);
+
+                    Peca peca = new Peca(name, codigo, categoria, status,preco8);
                     data.putExtra(EXTRA_NEW_CONTACT, peca);
                     setResult(RESULT_OK, data);
                     finish();

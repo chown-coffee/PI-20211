@@ -10,7 +10,8 @@
     <string name="hint_codigo">Codigo</string>
     <string name="hint_categoria">Categoria</string>
     <string name="simbolo_moeda">R$</string>
-    <string name="hint_valorVenda">Valor</string>
+    <string name="hint_lucro">Lucro</string>
+    <string name="hint_custo">Custo</string>
     <string name="hint_status">Status</string>
     <string name="salvar_button">Salvar</string>
 
@@ -20,4 +21,14 @@
     <string name="favorites_title">Favorites</string>
     <string name="remove_title">Remove</string>
     <string name="share_title">Share</string>
+    <string name="editar">EDITAR</string>
+    <string name="custo">Custo: 100</string>
+    <string name="venda">Venda: 150</string>
+    <string name="lucro">Lucro: 50%</string>
+    <string name="data">Data:</string>
+    <string name="custo_textView">Custo:</string>
+    <string name="lucro_textView">Lucro:</string>
+    <string name="preco_textView">Preço:</string>
+    <string name="simbolo_porcentagem">%</string>
+    <string name="showPeca">Peça</string>
 </resources>

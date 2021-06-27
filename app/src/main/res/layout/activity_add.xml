@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/codigo_editText" />
 
     <EditText
-        android:id="@+id/valorVenda_editText"
+        android:id="@+id/cust_editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
@@ -77,11 +77,26 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:ems="10"
-        android:hint="@string/hint_valorVenda"
+        android:hint="@string/hint_custo"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoria_editText" />
+    <EditText
+        android:id="@+id/lucr_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:hint="@string/hint_lucro"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cust_editText" />
 
     <TextView
         android:id="@+id/simb_moeda_text_view"
@@ -89,10 +104,20 @@
         android:layout_height="wrap_content"
         android:text="@string/simbolo_moeda"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/valorVenda_editText"
-        app:layout_constraintEnd_toStartOf="@+id/valorVenda_editText"
+        app:layout_constraintBottom_toBottomOf="@+id/cust_editText"
+        app:layout_constraintEnd_toStartOf="@+id/cust_editText"
         app:layout_constraintStart_toStartOf="@+id/categoria_editText"
-        app:layout_constraintTop_toTopOf="@+id/valorVenda_editText" />
+        app:layout_constraintTop_toTopOf="@+id/cust_editText" />
+    <TextView
+        android:id="@+id/simb_porcentagem_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/simbolo_porcentagem"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lucr_editText"
+        app:layout_constraintEnd_toStartOf="@+id/lucr_editText"
+        app:layout_constraintStart_toStartOf="@+id/categoria_editText"
+        app:layout_constraintTop_toTopOf="@+id/lucr_editText" />
 
     <Button
         android:id="@+id/save_button"
