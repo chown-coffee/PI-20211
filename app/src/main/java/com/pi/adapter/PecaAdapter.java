@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pi.R;
 import com.pi.model.Peca;
+import com.pi.model.Preco;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,8 @@ public class PecaAdapter extends RecyclerView.Adapter<PecaAdapter.MyViewHolder> 
         holder.codigoTextView.setText(peca.getCodigo());
         holder.nameTextView.setText(peca.getNome());
         holder.categoriaTextView.setText(peca.getCategoria());
-        holder.valorVendaTextView.setText("R$ "+peca.getValorVenda());
+        Preco pre=peca.getPrecos().get(peca.getPrecos().size()-1);
+        holder.valorVendaTextView.setText("R$ "+pre.calcula_preco());
         if(!peca.isAtiva()){
             holder.statusImageView.setImageResource(R.drawable.ic_status_no);
         }
