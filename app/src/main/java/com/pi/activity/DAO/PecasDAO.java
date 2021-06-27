@@ -12,10 +12,25 @@ import com.pi.model.Peca;
 import java.util.List;
 
 public class PecasDAO {
-    public void RemoveItem(final int position, Peca peca) {
+    public void RemoveItem(final int position, Context context, List<Peca> myDataSet, PecaAdapter adapter) {
+        /*Logger logger=Logger.getLogger(PecasDAO.class.getName());
+        System.out.println(logger.toString());*/
+        Log.d("teste","teste");
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        alertDialog.setTitle("Remove?");
+        alertDialog.setMessage("Do you want to remove " + myDataSet.get(position).getNome() + "?");
 
-        REMOVE *
+        alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                myDataSet.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
 
+        alertDialog.setNegativeButton("Cancel", null);
+
+        alertDialog.show();
     }
     public void AdicionaItem(List<Peca> myDataSet,Peca peca){
         myDataSet.add(peca);
