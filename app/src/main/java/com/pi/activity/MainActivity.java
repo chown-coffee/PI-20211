@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements PecaAdapter.OnIte
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                adapter.notifyDataSetChanged();
+                adapter.setDataSetFull(myDataSet);
                 adapter.getFilter().filter(newText);
                 return false;
             }

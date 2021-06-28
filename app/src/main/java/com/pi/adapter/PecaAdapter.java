@@ -36,6 +36,10 @@ public class PecaAdapter extends RecyclerView.Adapter<PecaAdapter.MyViewHolder> 
         //this.nomeListAll=new ArrayList<>(nomeList);
     }
 
+    public void setDataSetFull(List<Peca> dataSetFull) {
+        this.dataSetFull = dataSetFull;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
